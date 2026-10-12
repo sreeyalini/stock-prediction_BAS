@@ -1,0 +1,36 @@
+# Python virtual environments
+venv/
+.venv/
+env/
+
+# Python cache
+__pycache__/
+*.pyc
+*.pyo
+
+# Local environment and credentials
+.env
+.env.*
+
+# Git and IDE files
+.git/
+.gitignore
+.vscode/
+.idea/
+
+# Temporary files
+*.log
+*.tmp
+.pytest_cache/
+.ipynb_checkpoints/
+
+# Operating system files
+.DS_Store
+Thumbs.db
+# BTP destination import file (not part of the app)
+S43
+
+# Local run helpers (not part of the app)
+run.sh
+.venv-bas/
+*.zip

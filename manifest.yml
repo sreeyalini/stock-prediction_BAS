@@ -1,0 +1,36 @@
+applications:
+  - name: sap-tabpfn-stock-prediction
+    memory: 512M
+    disk_quota: 1G
+    instances: 1
+    buildpacks:
+      - python_buildpack
+    command: python -m uvicorn main:app --host 0.0.0.0 --port $PORT
+    health-check-type: http
+    health-check-http-endpoint: /health
+
+    # ---------- BTP services (destination + Cloud Connector) ----------
+    services:
+      - destination-service
+      - btp-connectivity
+
+    env:
+      # ---------- SAP S/4HANA (via BTP destination) ----------
+      S4_DESTINATION_NAME: "S43"
+      S4_CLIENT: "100"
+
+      # ---------- SAP AI Core ----------
+      AICORE_AUTH_URL: https://gen-ai.authentication.us10.hana.ondemand.com/oauth/token
+      AICORE_CLIENT_ID: 'sb-42a29a03-b2f4-47de-9a41-e0936be9aaf5!b256749|aicore!b164'
+      AICORE_CLIENT_SECRET: 'b5e6caee-15aa-493a-a6ac-1fef0ab6e9fe$Satg7UGYPLsz5YYeXefHpbwTfEqqCkQEbasMDPGHAgU='
+      AICORE_API_URL: https://api.ai.prod.us-east-1.aws.ml.hana.ondemand.com/v2
+      AICORE_RESOURCE_GROUP: default
+      TABPFN_DEPLOYMENT_ID: d74ec60f5aeab7de
+      TABPFN_PREDICT_PATH: /predict
+
+      # ---------- SSL ----------
+      VERIFY_SSL: "false"
+
+      # ---------- Training data ----------
+      TRAINING_CSV_PATH: stock_training_NEXT_7_DAYS_DEMO.csv
+      ALLOW_DEMO_TRAINING: true

@@ -1,0 +1,16 @@
+#----------------------------------------------------------------------------
+# BTP destination "S43" - import via BTP Cockpit > Connectivity > Destinations
+# > Import Destination, then enter the password and click Save.
+# URL must match the Virtual Host:Port mapped in the Cloud Connector.
+#----------------------------------------------------------------------------
+Name=S43
+Type=HTTP
+URL=http\://192.168.8.69\:50000
+ProxyType=OnPremise
+Authentication=BasicAuthentication
+User=Praveen
+Password=
+sap-client=100
+WebIDEEnabled=true
+WebIDEUsage=odata_abap
+HTML5.DynamicDestination=true
