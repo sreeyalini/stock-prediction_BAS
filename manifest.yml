@@ -32,5 +32,5 @@ applications:
       VERIFY_SSL: "false"
 
       # ---------- Training data ----------
-      TRAINING_CSV_PATH: stock_training_NEXT_7_DAYS_DEMO.csv
+      TRAINING_CSV_PATH: stock_training_DIRECT_STOCK_NEEDED_30D_DEMO.csv
       ALLOW_DEMO_TRAINING: true
